@@ -4,6 +4,9 @@ import java.util.Calendar;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,5 +26,14 @@ public aspect Observer {
     	System.out.println(line);
         }
     }
+    
+    pointcut cambio(): call(void backgroundColorChange(String));
+	after(): cambio(){
+		Stage st = new Stage();
+		UserScreen us = new UserScreen();
+		Scene sc = new Scene(us.getRoot(),300,100);
+		st.setScene(sc);
+		st.show();
+	}
 }
 
