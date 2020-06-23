@@ -7,3 +7,9 @@ Color elegido :blue Hora de cambio de color: 22:26
 Color elegido :blue Hora de cambio de color: 22:28
 Color elegido :blue Hora de cambio de color: 22:30
 Color elegido :blue Hora de cambio de color: 22:33
+Color elegido :blue Hora de cambio de color: 22:44
+Color elegido :red Hora de cambio de color: 22:44
+Color elegido :green Hora de cambio de color: 22:44
+Color elegido :green Hora de cambio de color: 22:44
+Color elegido :red Hora de cambio de color: 22:56
+Color elegido :blue Hora de cambio de color: 22:57

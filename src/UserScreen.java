@@ -4,6 +4,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Calendar;
 
 public class UserScreen {
 	private Pane root;
@@ -35,6 +38,22 @@ public class UserScreen {
 			
 		});
 		
+	}
+	
+	public void guardarArchivo(String nombre) {
+		try {
+			Calendar calendario = Calendar.getInstance();
+			File archivo = new File("Registro.txt");
+			FileWriter escribir = new FileWriter(archivo, true);
+			escribir.write(nombre);
+			escribir.write("Color");//Aqui va el color
+			escribir.write(calendario.get(Calendar.HOUR_OF_DAY));
+			escribir.write("\n");			
+			
+			escribir.close();
+		}catch (Exception e) {
+			System.out.println("Error al escribir");
+		}
 	}
 	
 	public Pane getRoot() {
