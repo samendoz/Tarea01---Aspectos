@@ -13,3 +13,4 @@ Color elegido :green Hora de cambio de color: 22:44
 Color elegido :green Hora de cambio de color: 22:44
 Color elegido :red Hora de cambio de color: 22:56
 Color elegido :blue Hora de cambio de color: 22:57
+Usuario registrado: Edwars

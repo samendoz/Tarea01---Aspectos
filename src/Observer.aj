@@ -4,36 +4,40 @@ import java.util.Calendar;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+
 public aspect Observer {
     File file = new File("log.txt");
     Calendar cal = Calendar.getInstance();
+    
     @After("execution(void backgroundColorChange(..))")
     public void writeLog(JoinPoint joinpoint){
     	String argumento=Arrays.toString(joinpoint.getArgs()).replace("[","").replace("]","");
-    	String line = "Color elegido :"+argumento+" Hora de cambio de color: " + cal.get(Calendar.HOUR_OF_DAY)+":"+ cal.get(Calendar.MINUTE) + "\n";
+    	String line = "Color elegido: "+argumento+" ----- Hora de cambio de color: " + cal.get(Calendar.HOUR_OF_DAY)+":"+ cal.get(Calendar.MINUTE) + "\n";
     	try {
     		Files.write(file.toPath(), line.getBytes(),  StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
     	}catch (IOException ex) {
-            System.out.println("no hay linea");
+            System.out.println("No hay linea");
         }finally{
-    	System.out.println(line);
+        	System.out.println(line);
         }
     }
     
-    pointcut cambio(): call(void backgroundColorChange(String));
-	after(): cambio(){
-		Stage st = new Stage();
-		UserScreen us = new UserScreen();
-		Scene sc = new Scene(us.getRoot(),300,100);
-		st.setScene(sc);
-		st.show();
-	}
-}
+    
+    @After("execution(void setUsuario(..))")
+    public void writeUser(JoinPoint joinpoint) {
+    	String argumento = Arrays.toString(joinpoint.getArgs()).replace("[","").replace("]","");
+        String line = "Usuario registrado: "+argumento+ "\n";
+        try {
+        	Files.write(file.toPath(), line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+        }catch (IOException ex) {
+        	System.out.println("No hay usuario");
+        }finally {
+        	System.out.println(line);
+        }
+    }
 
+}

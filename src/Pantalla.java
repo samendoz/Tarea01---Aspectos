@@ -11,6 +11,8 @@ public class Pantalla{
 	private HBox botonera;
 	private HBox botoneraAdicionales;
     private Label title;
+    private String usuario;
+
     
     public Pantalla(){
     	root = new VBox();
@@ -29,22 +31,38 @@ public class Pantalla{
 	   botonera.getChildren().addAll(blue, red, green);
 	   botonera.setSpacing(25);
 	   botonera.setAlignment(Pos.CENTER);
+	   
 	   blue.setOnAction(e -> backgroundColorChange("blue"));
 	   red.setOnAction(e -> backgroundColorChange("red"));
-	   green.setOnAction(e -> backgroundColorChange("green"));
+	   green.setOnAction(e -> backgroundColorChange("green")); 
+	   
 	   Button exit = new Button("Exit");
 	   Button funcAdicional = new Button("Funcionalidad Adicional");
+	   
+	   funcAdicional.setOnAction(e -> {
+		   UserScreen.crearScreen();
+		   this.setUsuario(UserScreen.getNombre());
+	   });
+	   
 	   botoneraAdicionales.getChildren().addAll(funcAdicional, exit);
 	   botoneraAdicionales.setSpacing(25);
 	   botoneraAdicionales.setAlignment(Pos.CENTER);
 	   exit.setOnAction(e -> Platform.exit());
    }
+   
    private void backgroundColorChange(String color) {
 	   String style = "-fx-background-color: "+color+ ";";
 	   title.setTextFill(Color.WHITE);
 	   root.setStyle(style);
    }
+   
+   private void setUsuario(String usuario) {
+	   this.usuario = usuario;
+   }
+   
    public VBox getRoot() {
 	   return this.root;
    }
+   
+   
 }
