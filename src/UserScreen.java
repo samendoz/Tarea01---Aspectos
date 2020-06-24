@@ -26,12 +26,15 @@ public class UserScreen {
 		guardar.setOnAction(e -> guardar(tf.getText()));
 		VBox contenido = new VBox();
 		HBox save = new HBox();
-		Label info = new Label("Ingrese su nombre: ");
+		Label info = new Label("Ingrese su nombre");
 		save.getChildren().addAll(tf,guardar);
+		save.setAlignment(Pos.CENTER);
+		save.setSpacing(10);
 		contenido.getChildren().addAll(info,save);
 		contenido.setAlignment(Pos.CENTER);
+		contenido.setSpacing(20);
 		
-		Scene escenaPopup = new Scene(contenido, 300, 250);
+		Scene escenaPopup = new Scene(contenido, 325, 150);
 		popup.setScene(escenaPopup);
 		popup.alwaysOnTopProperty();
 		popup.showAndWait();
