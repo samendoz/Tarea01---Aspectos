@@ -11,7 +11,6 @@ public class Pantalla{
 	private HBox botonera;
 	private HBox botoneraAdicionales;
     private Label title;
-    private String usuario;
 
     
     public Pantalla(){
@@ -41,7 +40,6 @@ public class Pantalla{
 	   
 	   funcAdicional.setOnAction(e -> {
 		   UserScreen.crearScreen();
-		   this.setUsuario(UserScreen.getNombre());
 	   });
 	   
 	   botoneraAdicionales.getChildren().addAll(funcAdicional, exit);
@@ -54,10 +52,6 @@ public class Pantalla{
 	   String style = "-fx-background-color: "+color+ ";";
 	   title.setTextFill(Color.WHITE);
 	   root.setStyle(style);
-   }
-   
-   private void setUsuario(String usuario) {
-	   this.usuario = usuario;
    }
    
    public VBox getRoot() {

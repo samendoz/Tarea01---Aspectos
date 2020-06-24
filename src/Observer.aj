@@ -27,7 +27,7 @@ public aspect Observer {
     }
     
     
-    @After("execution(void setUsuario(..))")
+    @After("execution(void guardar(..))")
     public void writeUser(JoinPoint joinpoint) {
     	String argumento = Arrays.toString(joinpoint.getArgs()).replace("[","").replace("]","");
         String line = "Usuario registrado: "+argumento+ "\n";

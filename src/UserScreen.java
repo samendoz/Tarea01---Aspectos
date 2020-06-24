@@ -9,22 +9,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class UserScreen {
+	
 	private static String nombre;
+	private static TextField tf;
+	private static Button guardar;
+	private static Stage popup;
 	
 	public static void crearScreen() {
-		Stage popup = new Stage();
+		popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
 		popup.setTitle("Funcionalidad adicional");
 		
-		TextField tf = new TextField();
-		Button guardar = new Button("Guardar");
+		tf = new TextField();
+		guardar = new Button("Guardar");
 		
-		guardar.setOnAction(e -> {
-			nombre = tf.getText();
-			tf.clear();
-			popup.close();
-		});
-		
+		guardar.setOnAction(e -> guardar(tf.getText()));
 		VBox contenido = new VBox();
 		HBox save = new HBox();
 		Label info = new Label("Ingrese su nombre: ");
@@ -41,6 +40,11 @@ public class UserScreen {
 	public static String getNombre() {
 		return nombre;
 		
+	}
+	public static void guardar(String name) {
+		nombre = name;
+		tf.clear();
+		popup.close();
 	}
 
 }
